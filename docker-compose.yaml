@@ -1,9 +1,13 @@
 version: '3'
 services:
-  # my-app:
-  # image: ${docker-registry}/my-app:1.0
-  # ports:
-  # - 3000:3000
+  app:
+    build: ./app
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGO_URL=mongodb://admin:password@mongodb:27017
+    depends_on:
+      - mongodb
   mongodb:
     image: mongo
     ports:
